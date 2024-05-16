@@ -23,7 +23,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_good")
-public class GoodBean implements Serializable {
+public class MsgBean implements Serializable {
     @Serial
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

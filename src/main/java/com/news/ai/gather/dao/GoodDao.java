@@ -1,7 +1,7 @@
 package com.news.ai.gather.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.news.ai.gather.bean.model.GoodBean;
+import com.news.ai.gather.bean.model.MsgBean;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @createDate 2022-03-20 15:41:26
  */
 @Component
-public interface GoodDao extends BaseMapper<GoodBean> {
+public interface GoodDao extends BaseMapper<MsgBean> {
 
 }
 

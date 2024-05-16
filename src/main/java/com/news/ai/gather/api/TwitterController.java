@@ -1,16 +1,13 @@
 package com.news.ai.gather.api;
 
 import com.alibaba.fastjson2.JSON;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.news.ai.gather.bean.entity.BaseResponse;
-import com.news.ai.gather.bean.model.GoodBean;
 import com.news.ai.gather.bean.vo.IndexVo;
-import com.news.ai.gather.services.GoodService;
+import com.news.ai.gather.services.TwitterService;
 import com.news.ai.gather.support.ResponseFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -27,7 +24,7 @@ public class TwitterController {
 
     @Autowired
     @Qualifier(value = "goodService")
-    private GoodService goodService;
+    private TwitterService goodService;
 
     /**
      * 根据user获取用户的twitter
