@@ -2,6 +2,9 @@ logging:
   level:
     com.news.ai.gather: info
 
+server:
+  port: 9080
+
 spring:
   datasource:
     url: ${SPRING_DATASOURCE_URL}
