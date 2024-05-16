@@ -24,7 +24,8 @@ public class TwitterServiceImpl implements TwitterService {
 
 
     @Override
-    public void splitRealInfo(Map<String, Object> params) {
+    public List<TwitterDto> splitRealInfo(Map<String, Object> params) {
+        List<TwitterDto> dtoArray = new ArrayList<>();
         Map<String, Object> data = (Map<String, Object>) params.get("data");
         Map<String, Object> thread = (Map<String, Object>) data.get("threaded_conversation_with_injections_v2");
         List<Map<String, Object>> instructions = (List<Map<String, Object>>) thread.get("instructions");
@@ -40,6 +41,7 @@ public class TwitterServiceImpl implements TwitterService {
         }
 
         if (!entries.isEmpty()) {
+
             for (String item : entries) {
                 JSONObject itemJson = JSON.parseObject(item);
                 JSONObject content = itemJson.getJSONObject("content");
@@ -48,14 +50,13 @@ public class TwitterServiceImpl implements TwitterService {
                     String itemType = content.getString("itemType");
                     if ("TimelineTweet".equals(itemType)) {
                         JSONObject resultJson = itemContent.getJSONObject("tweet_results").getJSONObject("result");
-                        parseItemContent(resultJson);
+                        TwitterDto twitterDto = parseItemContent(resultJson);
+                        dtoArray.add(twitterDto);
                     }
-                } else if (content.containsKey("items")) {
-                    JSONArray items = content.getJSONArray("items");
-                    parseItems(items);
                 }
             }
         }
+        return dtoArray;
     }
 
     private TwitterDto parseItemContent(JSONObject resultJson) {
@@ -102,10 +103,6 @@ public class TwitterServiceImpl implements TwitterService {
         }
 
         return twitterDto;
-    }
-
-    private void parseItems(JSONArray items) {
-
     }
 
     private TwitterDto.UserDto parseUserDto(JSONObject resultJson) {
