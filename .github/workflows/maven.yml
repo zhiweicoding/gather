@@ -27,31 +27,31 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: Extract Maven project version
-        id: extract-version
-        run: echo "::set-output name=VERSION::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
-
-      - name: Extract Maven repository
-        id: extract-repository
-        run: echo "::set-output name=REPOSITORY::$(mvn help:evaluate -Dexpression=docker.repository -q -DforceStdout)"
+#      - name: Extract Maven project version
+#        id: extract-version
+#        run: echo "::set-output name=VERSION::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
+#
+#      - name: Extract Maven repository
+#        id: extract-repository
+#        run: echo "::set-output name=REPOSITORY::$(mvn help:evaluate -Dexpression=docker.repository -q -DforceStdout)"
 
       - name: Build with Maven
         run: mvn -B clean package -DskipTests --file pom.xml
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+#      - name: Log in to Docker Hub
+#        uses: docker/login-action@v1
+#        with:
+#          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+#          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
-      - name: Push the Docker image
-        run: docker push ${{ steps.extract-repository.outputs.REPOSITORY }}:${{ steps.extract-version.outputs.VERSION }}
-
-      - name: Set up SSH key
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy using docker-compose on remote server
-        run: |
-          ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_REMOTE_URL }} "cd ${{ secrets.SSH_REMOTE_PATH }} && docker pull ${{ steps.extract-repository.outputs.REPOSITORY }}:${{ steps.extract-version.outputs.VERSION }} && docker-compose -f start.yml up -d"
+#      - name: Push the Docker image
+#        run: docker push ${{ steps.extract-repository.outputs.REPOSITORY }}:${{ steps.extract-version.outputs.VERSION }}
+#
+#      - name: Set up SSH key
+#        uses: webfactory/ssh-agent@v0.5.3
+#        with:
+#          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+#
+#      - name: Deploy using docker-compose on remote server
+#        run: |
+#          ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_REMOTE_URL }} "cd ${{ secrets.SSH_REMOTE_PATH }} && docker pull ${{ steps.extract-repository.outputs.REPOSITORY }}:${{ steps.extract-version.outputs.VERSION }} && docker-compose -f start.yml up -d"
