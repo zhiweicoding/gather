@@ -7,8 +7,6 @@ logging:
 
 server:
   port: 9080
-  servlet:
-    context-path: /proxy
 
 spring:
   aop:
