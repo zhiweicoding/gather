@@ -32,9 +32,6 @@ spring:
       maximum-pool-size: 10
       minimum-idle: 5
       read-only: false
-  config:
-    activate:
-      on-profile: dev
 
 mybatis-plus:
   configuration:
