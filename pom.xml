@@ -14,10 +14,12 @@
     <name>news-ai</name>
     <description>loveqianqian</description>
     <url>zhiwei.plus</url>
+
     <properties>
         <java.version>17</java.version>
         <docker.repository>${project.description}/${project.artifactId}</docker.repository>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
