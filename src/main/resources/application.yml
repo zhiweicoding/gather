@@ -1,0 +1,55 @@
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    root: info
+    org.springframework: info
+    com.news.ai.gather: info
+
+server:
+  port: 9080
+  servlet:
+    context-path: /proxy
+
+spring:
+  aop:
+    auto: true
+    proxy-target-class: true
+  application:
+    name: gather
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+  datasource:
+    url: your_url
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: your_username
+    password: your_password
+    hikari:
+      connection-timeout: 10000
+      validation-timeout: 3000
+      idle-timeout: 60000
+      login-timeout: 5
+      max-lifetime: 60000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      read-only: false
+  config:
+    activate:
+      on-profile: dev
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+cos:
+  secretId: your_secretId
+  secretKey: your_secretKey
+  region: your_region
+  bucket: your_bucket
+  baseUrl: your_baseUrl
+
+management:
+  health:
+    elasticsearch:
+      enabled: false
