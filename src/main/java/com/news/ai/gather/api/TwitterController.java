@@ -23,8 +23,8 @@ import java.util.Map;
 public class TwitterController {
 
     @Autowired
-    @Qualifier(value = "goodService")
-    private TwitterService goodService;
+    @Qualifier(value = "twitterService")
+    private TwitterService twitterService;
 
     /**
      * 根据user获取用户的twitter
