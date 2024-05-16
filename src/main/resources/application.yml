@@ -21,10 +21,10 @@ spring:
       max-file-size: 500MB
       max-request-size: 500MB
   datasource:
-    url: your_url
+    url: ${SPRING_DATASOURCE_URL}
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: your_username
-    password: your_password
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     hikari:
       connection-timeout: 10000
       validation-timeout: 3000
@@ -43,11 +43,11 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 cos:
-  secretId: your_secretId
-  secretKey: your_secretKey
-  region: your_region
-  bucket: your_bucket
-  baseUrl: your_baseUrl
+  secretId: ${COS_SECRETID}
+  secretKey: ${COS_SECRETKEY}
+  region: ${COS_REGION}
+  bucket: ${COS_BUCKET}
+  baseUrl: ${COS_BASEURL}
 
 management:
   health:
