@@ -1,0 +1,16 @@
+logging:
+  level:
+    com.news.ai.gather: info
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+
+cos:
+  secretId: ${COS_SECRETID}
+  secretKey: ${COS_SECRETKEY}
+  region: ${COS_REGION}
+  bucket: ${COS_BUCKET}
+  baseUrl: ${COS_BASEURL}
