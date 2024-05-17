@@ -13,7 +13,7 @@ class DateUtilTest {
 
     @Test
     void conversionDate() {
-        long l = DateUtil.conversionDate("Mon May 13 19:59:32 +0000 2024");
+        long l = DateUtil.conversionDate2Long("Mon May 13 19:59:32 +0000 2024");
         System.out.println(l);
     }
 }

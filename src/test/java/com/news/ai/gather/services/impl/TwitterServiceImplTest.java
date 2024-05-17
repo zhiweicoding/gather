@@ -79,7 +79,7 @@ class TwitterServiceImplTest {
     public void test4() {
         String imageUrl = "https://pbs.twimg.com/ext_tw_video_thumb/1791107284015435777/pu/img/cnMqmzoFjEEhUDDG.jpg";
 
-        System.out.println(cosSupport.upFile("img/twitter/", imageUrl));
+        cosSupport.upFile("img/twitter/", imageUrl);
     }
 
 
