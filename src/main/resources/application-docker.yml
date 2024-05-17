@@ -17,3 +17,7 @@ cos:
   region: ${COS_REGION}
   bucket: ${COS_BUCKET}
   baseUrl: ${COS_BASEURL}
+
+deepseek:
+  token: ${DEEPSEEK_TOKEN}
+  url: https://api.deepseek.com/models

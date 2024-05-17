@@ -119,6 +119,46 @@
       "name": "elasticsearch.auth.enable",
       "type": "java.lang.String",
       "description": "es enable"
+    },
+    {
+      "name": "twitter.userLink",
+      "type": "java.lang.String",
+      "description": "twitter redirect link for user"
+    },
+    {
+      "name": "twitter.detailLink",
+      "type": "java.lang.String",
+      "description": "twitter redirect link for detail"
+    },
+    {
+      "name": "deepseek.token",
+      "type": "java.lang.String",
+      "description": "deep seek api token"
+    },
+    {
+      "name": "threadpool.corePoolSize",
+      "type": "java.lang.String",
+      "description": "thread pool core size"
+    },
+    {
+      "name": "threadpool.maxPoolSize",
+      "type": "java.lang.String",
+      "description": "Description for threadpool.maxPoolSize."
+    },
+    {
+      "name": "threadpool.keepAliveTime",
+      "type": "java.lang.String",
+      "description": "Description for threadpool.keepAliveTime."
+    },
+    {
+      "name": "threadpool.queueCapacity",
+      "type": "java.lang.String",
+      "description": "Description for threadpool.queueCapacity."
+    },
+    {
+      "name": "threadpool.threadNamePrefix",
+      "type": "java.lang.String",
+      "description": "Description for threadpool.threadNamePrefix."
     }
   ]
 }

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.awt.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -16,13 +16,18 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TwitterDto {
-    private String tweetId;
+    private String tweetId;//https://twitter.com/imxiaohu/status/
     private String fullText;
-    private long createdAt;
-    private String expanded;
+    private String translateMsgContent;
+    private LocalDateTime createdAt;
     private List<String> photoUrlArray;
-    private List<String> videoUrlArray;
+    private List<VideoDto> videoUrlArray;
     private UserDto userDto;
+    private boolean retweet;
+    private UserDto retweetUserDto;
+    private String retweetId;
+
+    private List<String> msgLinkArray;
 
 
     private TwitterDto subTwitterDto;
@@ -36,6 +41,6 @@ public class TwitterDto {
         private String id;
         private String name;
         private String imgUrl;
-        private long createdAt;
+        private LocalDateTime createdAt;
     }
 }

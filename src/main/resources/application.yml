@@ -48,3 +48,18 @@ management:
   health:
     elasticsearch:
       enabled: false
+
+twitter:
+  userLink: https://twitter.com/{userId}
+  detailLink: https://twitter.com/{userId}/status/{restId}
+
+deepseek:
+  token: ${DEEPSEEK_TOKEN}
+  url: https://api.deepseek.com/models
+
+threadpool:
+  corePoolSize: 20
+  maxPoolSize: 30
+  keepAliveTime: 300
+  queueCapacity: 200
+  threadNamePrefix: gather-thread-
