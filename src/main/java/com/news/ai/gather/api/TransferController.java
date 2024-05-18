@@ -42,7 +42,7 @@ public class TransferController {
     @PostMapping("/set/cookie")
     public
     @ResponseBody
-    BaseResponse<List<String>> setCookie(@RequestBody Map<String, Object> body) {
+    BaseResponse<List<String>> setCookie(@RequestBody Object body) {
         log.info("set cookie ,入参 : {}", JSON.toJSONString(body));
         return ResponseFactory.success(null);
     }
