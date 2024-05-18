@@ -24,6 +24,14 @@ public class ResponseFactory {
         return response;
     }
 
+    public static <T> BaseResponse<T> argsNotCorrect(T t) {
+        BaseResponse<T> response = new BaseResponse<>();
+        response.setMsgCode(StatsEnum.ARGS_NOT_CORRECT.code);
+        response.setMsgBody(t);
+        response.setMsgInfo(StatsEnum.ARGS_NOT_CORRECT.name);
+        return response;
+    }
+
     public static <T> BaseResponse<T> noToken(T t) {
         BaseResponse<T> response = new BaseResponse<>();
         response.setMsgCode(StatsEnum.NO_TOKEN.code);
@@ -44,6 +52,7 @@ public class ResponseFactory {
     public enum StatsEnum {
         SUCCESS(10000, "成功"),
         FAIL(10001, "失败"),
+        ARGS_NOT_CORRECT(10004, "必要参数缺失"),
         NO_TOKEN(10003, "没有登陆状态"),
         I_DO_NOT_KNOW(10002, "未知错误"),
         ERROR_URL(10005, "错误的地址");

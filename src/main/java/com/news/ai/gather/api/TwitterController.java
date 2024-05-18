@@ -9,6 +9,7 @@ import com.news.ai.gather.support.ResponseFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,6 +52,5 @@ public class TwitterController {
             return ResponseFactory.fail(null);
         }
     }
-
 
 }
