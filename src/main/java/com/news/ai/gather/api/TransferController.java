@@ -39,7 +39,7 @@ public class TransferController {
      *
      * @return
      */
-    @GetMapping("/set/cookie")
+    @PostMapping("/set/cookie")
     public
     @ResponseBody
     BaseResponse<List<String>> setCookie(@RequestBody Map<String, Object> body) {
