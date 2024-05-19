@@ -46,4 +46,17 @@ public class TransferController {
         log.info("set cookie ,入参 : {}", JSON.toJSONString(body));
         return ResponseFactory.success(null);
     }
+
+    /**
+     * query user domain
+     *
+     * @return
+     */
+    @PostMapping("/set/token")
+    public
+    @ResponseBody
+    BaseResponse<List<String>> setToken(@RequestBody Object body) {
+        log.info("set token ,入参 : {}", JSON.toJSONString(body));
+        return ResponseFactory.success(null);
+    }
 }
