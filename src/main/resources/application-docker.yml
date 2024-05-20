@@ -10,6 +10,17 @@ spring:
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
+  data:
+    redis:
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 10
+          min-idle: 1
+          max-wait: -1ms
+      password: ${REDIS_PASSWORD}
+      port: ${REDIS_PORT}
+      host: ${REDIS_HOST}
 
 cos:
   secretId: ${COS_SECRETID}
@@ -21,3 +32,13 @@ cos:
 deepseek:
   token: ${DEEPSEEK_TOKEN}
   url: https://api.deepseek.com/models
+
+email:
+  from: ${EMAIL_FROM}
+  password: ${EMAIL_PASSWORD}
+  defaultTo: ${EMAIL_DEFAULTTO}
+  host: ${EMAIL_HOST}
+  protocol: ${EMAIL_PROTOCOL}
+  smtpAuth: ${EMAIL_SMTPAUTH}
+  debug: ${EMAIL_DEBUG}
+  content: ${EMAIL_CONTENT}

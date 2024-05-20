@@ -32,7 +32,20 @@ spring:
       maximum-pool-size: 10
       minimum-idle: 5
       read-only: false
-
+  cache:
+    redis:
+      cache-null-values: false
+  data:
+    redis:
+      lettuce:
+        pool:
+          max-active: 1
+          max-idle: 1
+          min-idle: 0
+          max-wait: -1ms
+      password: ${REDIS_PASSWORD}
+      port: ${REDIS_PORT}
+      host: ${REDIS_HOST}
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
@@ -63,3 +76,13 @@ threadpool:
   keepAliveTime: 300
   queueCapacity: 200
   threadNamePrefix: gather-thread-
+
+email:
+  from: ${EMAIL_FROM}
+  password: ${EMAIL_PASSWORD}
+  defaultTo: ${EMAIL_DEFAULTTO}
+  host: ${EMAIL_HOST}
+  protocol: ${EMAIL_PROTOCOL}
+  smtpAuth: ${EMAIL_SMTPAUTH}
+  debug: ${EMAIL_DEBUG}
+  content: ${EMAIL_CONTENT}

@@ -159,6 +159,46 @@
       "name": "threadpool.threadNamePrefix",
       "type": "java.lang.String",
       "description": "Description for threadpool.threadNamePrefix."
+    },
+    {
+      "name": "email.from",
+      "type": "java.lang.String",
+      "description": "Description for email.from."
+    },
+    {
+      "name": "email.password",
+      "type": "java.lang.String",
+      "description": "Description for email.password."
+    },
+    {
+      "name": "email.defaultTo",
+      "type": "java.lang.String",
+      "description": "Description for email.defaultTo."
+    },
+    {
+      "name": "email.content",
+      "type": "java.lang.String",
+      "description": "Description for email.content."
+    },
+    {
+      "name": "email.host",
+      "type": "java.lang.String",
+      "description": "Description for email.defaultTo."
+    },
+    {
+      "name": "email.protocol",
+      "type": "java.lang.String",
+      "description": "Description for email.protocol."
+    },
+    {
+      "name": "email.smtpAuth",
+      "type": "java.lang.String",
+      "description": "Description for email.smtpAuth."
+    },
+    {
+      "name": "email.debug",
+      "type": "java.lang.String",
+      "description": "Description for email.debug."
     }
   ]
 }
