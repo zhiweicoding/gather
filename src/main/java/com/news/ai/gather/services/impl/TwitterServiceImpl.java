@@ -20,18 +20,15 @@ import com.news.ai.gather.utils.DateUtil;
 import com.news.ai.gather.utils.EnglishLanguageDetectorUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.*;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhiwei
@@ -108,7 +105,18 @@ public class TwitterServiceImpl implements TwitterService {
 
         if (!dtoArray.isEmpty()) {
             String kolId = insertKol(dtoArray.get(0).getUserDto());
-            List<MsgBean> msgBeans = packageTwitterData(kolId, dtoArray);
+            List<TwitterDto> insertDtoArray = new ArrayList<>();
+            for (TwitterDto twitterDto : dtoArray) {
+                String tweetId = twitterDto.getTweetId();
+                if (tweetId != null && !tweetId.isEmpty()) {
+                    boolean existFromId = msgDao.exists(Wrappers.<MsgBean>lambdaQuery()
+                            .eq(MsgBean::getMsgFromId, tweetId));
+                    if (!existFromId) {
+                        insertDtoArray.add(twitterDto);
+                    }
+                }
+            }
+            List<MsgBean> msgBeans = packageTwitterData(kolId, insertDtoArray);
 
             log.debug("msgBeans:{}", JSON.toJSONString(msgBeans));
             log.debug("msgBeans size:{}", msgBeans.size());

@@ -55,13 +55,13 @@ public class QueryController {
                 wrapper.eq(QueryUserBean::getQType, type);
             }
             if (!"all".equals(args)) {
-                wrapper.eq(QueryUserBean::getQUserId, args);
+                wrapper.eq(QueryUserBean::getUserAccount, args);
             }
             List<QueryUserBean> resultList = queryService.list(wrapper);
             return ResponseFactory.success(
                     resultList.stream()
                             .map(q -> {
-                                String qUserId = q.getQUserId();
+                                String qUserId = q.getUserAccount();
                                 return twitterUserList.replace("{userId}", qUserId);
                             })
                             .collect(Collectors.toList())

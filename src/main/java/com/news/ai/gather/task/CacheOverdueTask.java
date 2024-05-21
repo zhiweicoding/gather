@@ -40,11 +40,11 @@ public class CacheOverdueTask {
         log.info("start task job ! check cache is overdue");
         long cookie = redisSupport.expireTime(TwitterKeyConstants.TWITTER_COOKIE);
         long token = redisSupport.expireTime(TwitterKeyConstants.TWITTER_TOKEN);
-        if (cookie < min_expire_time) {
+        if (cookie != -1 && cookie < min_expire_time) {
             log.info("cookie is overdue , send email");
             emailService.sendOverdue(defaultTo, "twitter cookie is overdue", "twitter cookie is overdue,please check Automa");
         }
-        if (token < min_expire_time) {
+        if (token != -1 && token < min_expire_time) {
             log.info("token is overdue , send email");
             emailService.sendOverdue(defaultTo, "twitter token is overdue", "twitter token is overdue,please check Automa");
 
@@ -56,7 +56,7 @@ public class CacheOverdueTask {
     public void healthCheck() {
         log.info("start healthCheck ! check cache is overdue");
         long healthCheck = redisSupport.expireTime(TwitterKeyConstants.TWITTER_HEALTH_CHECK);
-        if (healthCheck < min_health_check_expire_time) {
+        if (healthCheck != -1 && healthCheck < min_health_check_expire_time) {
             log.info("healthCheck is overdue , send email");
             emailService.sendOverdue(defaultTo, "health check result is fail ", "please check automa !!!! ");
         }

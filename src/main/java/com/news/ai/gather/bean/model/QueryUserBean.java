@@ -30,7 +30,8 @@ public class QueryUserBean implements Serializable {
     private static final long serialVersionUID = -7241507792877439601L;
     @TableId(type = IdType.AUTO)
     private String qId;
-    private String qUserId;
+    private String userId;
+    private String userAccount;
     private String qType;
     private int isDelete;
 
