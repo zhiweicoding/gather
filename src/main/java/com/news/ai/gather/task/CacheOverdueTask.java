@@ -52,16 +52,16 @@ public class CacheOverdueTask {
         log.info("end task job ! check cache is overdue ");
     }
 
-    @Scheduled(fixedDelay = 60L * 1000L)
-    public void healthCheck() {
-        log.info("start healthCheck ! check cache is overdue");
-        long healthCheck = redisSupport.expireTime(TwitterKeyConstants.TWITTER_HEALTH_CHECK);
-        if (healthCheck != -1 && healthCheck < min_health_check_expire_time) {
-            log.info("healthCheck is overdue , send email");
-            emailService.sendOverdue(defaultTo, "health check result is fail ", "please check automa !!!! ");
-        }
-        log.info("end healthCheck ! check cache is overdue ");
-    }
+//    @Scheduled(fixedDelay = 60L * 1000L)
+//    public void healthCheck() {
+//        log.info("start healthCheck ! check cache is overdue");
+//        long healthCheck = redisSupport.expireTime(TwitterKeyConstants.TWITTER_HEALTH_CHECK);
+//        if (healthCheck != -1 && healthCheck < min_health_check_expire_time) {
+//            log.info("healthCheck is overdue , send email");
+//            emailService.sendOverdue(defaultTo, "health check result is fail ", "please check automa !!!! ");
+//        }
+//        log.info("end healthCheck ! check cache is overdue ");
+//    }
 
 
 }
