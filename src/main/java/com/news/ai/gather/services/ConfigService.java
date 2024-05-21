@@ -11,4 +11,6 @@ import com.news.ai.gather.bean.model.QueryUserBean;
 public interface ConfigService extends IService<ConfigBean> {
 
     boolean refreshConfig(String key, String value);
+
+    void healthCheck(String random);
 }

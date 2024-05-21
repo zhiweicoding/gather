@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.news.ai.gather.bean.model.ConfigBean;
 import com.news.ai.gather.bean.model.QueryUserBean;
+import com.news.ai.gather.constants.TwitterKeyConstants;
 import com.news.ai.gather.dao.ConfigDao;
 import com.news.ai.gather.dao.QueryUserDao;
 import com.news.ai.gather.services.ConfigService;
@@ -53,6 +54,11 @@ public class ConfigServiceImpl extends ServiceImpl<ConfigDao, ConfigBean> implem
             return false;
         }
 
+    }
+
+    @Override
+    public void healthCheck(String random) {
+        redisSupport.set(TwitterKeyConstants.TWITTER_HEALTH_CHECK, random, 5L, TimeUnit.MINUTES);
     }
 }
 

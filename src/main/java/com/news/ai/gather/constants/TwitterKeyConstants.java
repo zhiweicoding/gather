@@ -8,5 +8,6 @@ package com.news.ai.gather.constants;
 public interface TwitterKeyConstants {
     String TWITTER_COOKIE = "twitter_cookies";
     String TWITTER_TOKEN = "twitter_token";
+    String TWITTER_HEALTH_CHECK = "twitter_health_check";
 
 }

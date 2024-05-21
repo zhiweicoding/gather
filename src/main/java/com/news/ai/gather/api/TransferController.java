@@ -37,6 +37,19 @@ public class TransferController {
     @Qualifier(value = "configService")
     private ConfigService configService;
 
+
+    /**
+     * health check
+     */
+    @GetMapping("/health/check")
+    public
+    @ResponseBody
+    BaseResponse<Boolean> healthCheck(@RequestParam String random) {
+        log.info("health check ,入参 : {}", random);
+        configService.healthCheck(random);
+        return ResponseFactory.success(Boolean.TRUE);
+    }
+
     /**
      * set cookie
      *

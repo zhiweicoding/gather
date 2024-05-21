@@ -28,7 +28,8 @@ public class CacheOverdueTask {
     @Value("${email.defaultTo}")
     private String defaultTo;
 
-    private static final long min_expire_time = 1000L * 60L * 30L;
+    private static final long min_expire_time = 60L * 30L;
+    private static final long min_health_check_expire_time = 30L;
 
     /**
      * checkCacheIsOverdue
@@ -49,6 +50,17 @@ public class CacheOverdueTask {
 
         }
         log.info("end task job ! check cache is overdue ");
+    }
+
+    @Scheduled(fixedDelay = 60L * 1000L)
+    public void healthCheck() {
+        log.info("start healthCheck ! check cache is overdue");
+        long healthCheck = redisSupport.expireTime(TwitterKeyConstants.TWITTER_HEALTH_CHECK);
+        if (healthCheck < min_health_check_expire_time) {
+            log.info("healthCheck is overdue , send email");
+            emailService.sendOverdue(defaultTo, "health check result is fail ", "please check automa !!!! ");
+        }
+        log.info("end healthCheck ! check cache is overdue ");
     }
 
 
