@@ -5,12 +5,12 @@
     <insert id="batchInsertMsg">
         INSERT INTO t_msg ( msg_type, msg_url,msg_content, translate_msg_content, create_user_id, retweet_user_id,
         retweet_from_id, is_retweet,is_sub,sub_msg_from_id, msg_from_id, msg_video_list, msg_img_list,
-        msg_info_record, org_create_time)
+        msg_info_record, org_create_time,is_delete)
         VALUES
         <foreach collection="list" item="msg" index="index" separator=",">
             (#{msg.msgType}, #{msg.msgUrl},#{msg.msgContent}, #{msg.translateMsgContent}, #{msg.createUserId},
             #{msg.retweetUserId}, #{msg.retweetFromId}, #{msg.isRetweet}, #{msg.isSub}, #{msg.subMsgFromId},
-            #{msg.msgFromId},#{msg.msgVideoList}, #{msg.msgImgList}, #{msg.msgInfoRecord}, #{msg.orgCreateTime})
+            #{msg.msgFromId},#{msg.msgVideoList}, #{msg.msgImgList}, #{msg.msgInfoRecord}, #{msg.orgCreateTime},1)
         </foreach>
     </insert>
 </mapper>

@@ -107,6 +107,7 @@ public class EmailServiceImpl extends ServiceImpl<EmailDao, EmailBean> implement
         emailBean.setEmailFrom(from);
         emailBean.setEmailTo(to == null ? defaultTo : to);
         emailBean.setLogTime(LocalDateTime.now());
+        emailBean.setIsDelete(1);
         boolean save = this.save(emailBean);
         if (save) {
             log.info("send overdue email success");

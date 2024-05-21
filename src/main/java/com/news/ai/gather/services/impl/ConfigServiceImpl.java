@@ -43,6 +43,7 @@ public class ConfigServiceImpl extends ServiceImpl<ConfigDao, ConfigBean> implem
                 ConfigBean configBean = new ConfigBean();
                 configBean.setConfigName(key);
                 configBean.setConfigValue(value);
+                configBean.setIsDelete(1);
                 this.save(configBean);
             }
             redisSupport.set(key, value, 5L, TimeUnit.HOURS);

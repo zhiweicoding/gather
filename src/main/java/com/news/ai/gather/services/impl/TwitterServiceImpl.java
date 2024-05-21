@@ -213,6 +213,7 @@ public class TwitterServiceImpl implements TwitterService {
             kolInfoBean.setKolName(userDto.getName());
             kolInfoBean.setDescription(userDto.getDescription());
             kolInfoBean.setKolImgUrl(userDto.getImgUrl());
+            kolInfoBean.setIsDelete(1);
             kolInfoDao.insert(kolInfoBean);
             return kolInfoBean.getKolId();
         } else {
@@ -242,6 +243,7 @@ public class TwitterServiceImpl implements TwitterService {
             videoBean.setHeight(videoDto.getHeight());
             videoBean.setWidth(videoDto.getWidth());
             videoBean.setDurationMillis(videoDto.getDurationMillis());
+            videoBean.setIsDelete(1);
             videoDao.insert(videoBean);
         } else {
             videoBean = videoDao.selectOne(existLambdaWrapper);
