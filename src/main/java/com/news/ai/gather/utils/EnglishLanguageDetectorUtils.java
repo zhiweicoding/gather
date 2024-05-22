@@ -21,6 +21,8 @@ public class EnglishLanguageDetectorUtils {
         text = removeEmojisV2(text);
         //remove new line
         text = removeNextLine(text);
+        //such as: @openai
+        text = removeTwitterHandles(text);
 
         int englishCharCount = 0;
         int totalCharCount = 0;
@@ -60,6 +62,11 @@ public class EnglishLanguageDetectorUtils {
         // 更全面的表情符号正则表达式
         String emojiRegex = "[\uD83C\uD000-\uD83C\uDFFF]|[\uD83D\uD000-\uD83D\uDFFF]|[\uD83E\uD000-\uD83E\uDFFF]|[\u2600-\u26FF]|[\u2700-\u27BF]|[\uFE0F]";
         return text.replaceAll(emojiRegex, "");
+    }
+
+    private static String removeTwitterHandles(String text) {
+        String twitterHandleRegex = "@\\w+";
+        return text.replaceAll(twitterHandleRegex, "").replace("RT", "");
     }
 
 }
