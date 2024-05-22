@@ -47,7 +47,7 @@ public class ConfigServiceImpl extends ServiceImpl<ConfigDao, ConfigBean> implem
                 configBean.setIsDelete(1);
                 this.save(configBean);
             }
-            redisSupport.set(key, value, 5L, TimeUnit.HOURS);
+            redisSupport.set(key, value, 8L, TimeUnit.HOURS);
             return true;
         } catch (Exception e) {
             log.error("refreshConfig error,{}", e.getMessage(), e);
