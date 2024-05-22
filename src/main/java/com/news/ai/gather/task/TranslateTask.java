@@ -56,6 +56,11 @@ public class TranslateTask {
                             .set(MsgBean::getIsAlreadyTranslate, 1)
                             .eq(MsgBean::getMsgId, m.getMsgId())
                     );
+                }else{
+                    msgService.update(null, Wrappers.<MsgBean>lambdaUpdate()
+                            .set(MsgBean::getIsAlreadyTranslate, 1)
+                            .eq(MsgBean::getMsgId, m.getMsgId())
+                    );
                 }
             } catch (Exception e) {
                 log.error("translate error,[{},{}]", m.getMsgId(), m.getMsgContent());
