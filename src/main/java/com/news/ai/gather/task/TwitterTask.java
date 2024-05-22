@@ -61,8 +61,8 @@ public class TwitterTask {
                     param.setToken(twitterToken);
                     List<TwitterDto> insertColl = collect.collect(param);
                     log.info("twitter collect result : {}", insertColl.size());
-                    Random r = new Random(10000);
-                    int randomSleep = r.nextInt();
+                    Random r = new Random();
+                    int randomSleep = r.nextInt(10000);
                     try {
                         Thread.sleep(randomSleep);
                     } catch (InterruptedException e) {
