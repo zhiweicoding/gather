@@ -14,6 +14,14 @@ public class EnglishLanguageDetectorUtils {
             return false;
         }
 
+        // 移除 URL
+        text = removeUrl(text);
+        // 移除表情符号
+        text = removeEmojis(text);
+        text = removeEmojisV2(text);
+        //remove new line
+        text = removeNextLine(text);
+
         int englishCharCount = 0;
         int totalCharCount = 0;
 
@@ -32,6 +40,26 @@ public class EnglishLanguageDetectorUtils {
 
     private static boolean isEnglishChar(char c) {
         return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+    }
+
+    private static String removeNextLine(String text) {
+        return text.replaceAll("\\r?\\n", "");
+    }
+
+    private static String removeUrl(String text) {
+        String urlRegex = "https?://\\S+\\s?";
+        return text.replaceAll(urlRegex, "");
+    }
+
+    private static String removeEmojis(String text) {
+        String emojiRegex = "[\\p{So}\\p{Cn}]";
+        return text.replaceAll(emojiRegex, "");
+    }
+
+    private static String removeEmojisV2(String text) {
+        // 更全面的表情符号正则表达式
+        String emojiRegex = "[\uD83C\uD000-\uD83C\uDFFF]|[\uD83D\uD000-\uD83D\uDFFF]|[\uD83E\uD000-\uD83E\uDFFF]|[\u2600-\u26FF]|[\u2700-\u27BF]|[\uFE0F]";
+        return text.replaceAll(emojiRegex, "");
     }
 
 }

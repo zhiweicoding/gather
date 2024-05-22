@@ -73,7 +73,7 @@ translate:
 
 deepseek:
   token: ${DEEPSEEK_TOKEN}
-  url: https://api.deepseek.com/models
+  url: https://api.deepseek.com/chat/completions
 
 threadpool:
   corePoolSize: 20

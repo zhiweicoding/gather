@@ -31,7 +31,7 @@ cos:
 
 deepseek:
   token: ${DEEPSEEK_TOKEN}
-  url: https://api.deepseek.com/models
+  url: https://api.deepseek.com/chat/completions
 
 twitter:
   task: open
