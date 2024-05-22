@@ -53,6 +53,7 @@ public class TranslateTask {
                     String translateStr = deepSeekSupport.chat(msgContent, deepSeekSupport.getTranslatePrompt());
                     msgService.update(null, Wrappers.<MsgBean>lambdaUpdate()
                             .set(MsgBean::getTranslateMsgContent, translateStr)
+                            .set(MsgBean::getIsAlreadyTranslate, 1)
                             .eq(MsgBean::getMsgId, m.getMsgId())
                     );
                 }
