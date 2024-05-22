@@ -105,6 +105,12 @@ public class DeepSeekSupport {
                     //\n\n####\n\n### 意译\n\n```\n
                     int lastIndexOf = chatResponse.lastIndexOf("意译");
                     chatResponse = chatResponse.substring(lastIndexOf + 2).replace("\\`\\`\\`", "").trim();
+                    if (chatResponse.startsWith("```")) {
+                        chatResponse = chatResponse.substring(3);
+                    }
+                    if (chatResponse.endsWith("```")) {
+                        chatResponse = chatResponse.substring(0, chatResponse.length() - 3);
+                    }
                 }
             }
         } catch (Exception e) {
