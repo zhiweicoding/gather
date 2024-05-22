@@ -33,6 +33,12 @@ deepseek:
   token: ${DEEPSEEK_TOKEN}
   url: https://api.deepseek.com/models
 
+twitter:
+  task: open
+
+translate:
+  task: open
+
 email:
   from: ${EMAIL_FROM}
   password: ${EMAIL_PASSWORD}

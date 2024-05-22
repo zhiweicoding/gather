@@ -204,6 +204,16 @@
       "name": "twitter.crawlUrl",
       "type": "java.lang.String",
       "description": "Description for twitter.crawlUrl."
+    },
+    {
+      "name": "twitter.task",
+      "type": "java.lang.String",
+      "description": "Description for twitter.task."
+    },
+    {
+      "name": "translate.task",
+      "type": "java.lang.String",
+      "description": "Description for translate.task."
     }
   ]
 }

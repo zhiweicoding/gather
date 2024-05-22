@@ -66,6 +66,10 @@ twitter:
   userLink: https://twitter.com/{userId}
   detailLink: https://twitter.com/{userId}/status/{restId}
   crawlUrl: https://x.com/i/api/graphql/gQlOy4mD5C8M8fYxqa0FJg/UserTweets
+  task: open
+
+translate:
+  task: open
 
 deepseek:
   token: ${DEEPSEEK_TOKEN}
