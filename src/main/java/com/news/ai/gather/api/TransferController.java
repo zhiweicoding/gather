@@ -1,27 +1,17 @@
 package com.news.ai.gather.api;
 
 import com.alibaba.fastjson2.JSON;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.news.ai.gather.bean.entity.BaseResponse;
-import com.news.ai.gather.bean.model.ConfigBean;
-import com.news.ai.gather.bean.model.QueryUserBean;
 import com.news.ai.gather.bean.vo.CookieVo;
 import com.news.ai.gather.constants.TwitterKeyConstants;
-import com.news.ai.gather.dao.ConfigDao;
 import com.news.ai.gather.services.ConfigService;
-import com.news.ai.gather.services.QueryService;
-import com.news.ai.gather.support.RedisSupport;
 import com.news.ai.gather.support.ResponseFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * transfer some variables
@@ -60,7 +50,7 @@ public class TransferController {
     @ResponseBody
     BaseResponse<Boolean> setCookie(@RequestBody CookieVo cookieVo) {
         log.info("set cookie ,入参 : {}", JSON.toJSONString(cookieVo));
-        boolean refreshResult = configService.refreshConfig(TwitterKeyConstants.TWITTER_COOKIE, cookieVo.getCookie());
+        boolean refreshResult = configService.refreshConfig(TwitterKeyConstants.TWITTER_COOKIE, cookieVo.toString());
         return ResponseFactory.success(refreshResult);
     }
 

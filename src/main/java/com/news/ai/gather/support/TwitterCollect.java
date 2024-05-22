@@ -60,7 +60,7 @@ public class TwitterCollect implements Collect<List<TwitterDto>, TwitterService>
                 .header("accept-language", "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7")
                 .header("authorization", tokenJson.getString("authorization"))
                 .header("content-type", tokenJson.getString("content-type"))
-                .header("cookie", cookie+";auth_token=e300cabb9f19ee4bf8ebd89585711e4f3645faf0")
+                .header("cookie", cookie)
                 .header("priority", "u=1, i")
                 .header("referer", "https://x.com/" + account)
                 .header("sec-ch-ua", "Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"")
