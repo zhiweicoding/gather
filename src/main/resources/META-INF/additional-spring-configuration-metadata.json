@@ -199,6 +199,11 @@
       "name": "email.debug",
       "type": "java.lang.String",
       "description": "Description for email.debug."
+    },
+    {
+      "name": "twitter.crawlUrl",
+      "type": "java.lang.String",
+      "description": "Description for twitter.crawlUrl."
     }
   ]
 }

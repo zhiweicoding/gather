@@ -11,6 +11,7 @@ import com.news.ai.gather.support.RedisSupport;
 import com.news.ai.gather.support.TwitterCollect;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -36,6 +37,9 @@ public class TwitterTask {
     @Autowired
     private QueryService queryService;
 
+    @Value("${twitter.crawlUrl}")
+    private String crawlUrl;
+
     /**
      * each task 60 min execute once
      */
@@ -53,7 +57,7 @@ public class TwitterTask {
                 try {
                     TwitterCollect collect = new TwitterCollect();
                     CollectParams<TwitterService> param = new CollectParams<>();
-                    param.setUrl("https://x.com/i/api/graphql/gQlOy4mD5C8M8fYxqa0FJg/UserTweets");
+                    param.setUrl(crawlUrl);
                     param.setService(twitterService);
                     param.setTxt(bean.getUserAccount());
                     param.setKey(bean.getUserId());
