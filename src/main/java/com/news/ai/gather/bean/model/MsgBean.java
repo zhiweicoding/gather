@@ -37,6 +37,7 @@ public class MsgBean implements Serializable {
     private String msgUrl;
     private String msgContent;
     private String translateMsgContent;
+    private int isAlreadyTranslate;
     private String createUserId;
     @TableField(exist = false)
     private KolInfoBean createUserKolInfo;

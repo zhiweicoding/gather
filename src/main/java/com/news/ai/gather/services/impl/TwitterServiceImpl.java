@@ -192,10 +192,7 @@ public class TwitterServiceImpl implements TwitterService {
         msgBean.setMsgType("twitter");
         String fullText = dto.getFullText();
         msgBean.setMsgContent(fullText);
-        if (EnglishLanguageDetectorUtils.isMostlyEnglish(fullText, 0.6)) {
-            String translateStr = deepSeekSupport.chat(fullText, deepSeekSupport.getTranslatePrompt());
-            msgBean.setTranslateMsgContent(translateStr);
-        }
+        msgBean.setIsAlreadyTranslate(-1);
         msgBean.setCreateUserId(kolId);
 
         if (dto.getRetweetId() != null && !dto.getRetweetId().isEmpty()) {

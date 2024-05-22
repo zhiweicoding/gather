@@ -20,4 +20,5 @@ public interface TwitterService {
     String insertKol(TwitterDto.UserDto userDto);
 
     VideoBean insertVideo(VideoDto videoDto);
+
 }
