@@ -4,7 +4,6 @@ import com.alibaba.fastjson2.JSON;
 import com.news.ai.gather.bean.dto.TwitterDto;
 import com.news.ai.gather.bean.entity.BaseResponse;
 import com.news.ai.gather.bean.vo.EmailMsgVo;
-import com.news.ai.gather.bean.vo.IndexVo;
 import com.news.ai.gather.services.EmailService;
 import com.news.ai.gather.support.ResponseFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -16,33 +15,26 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * transfer some variables
+ * coze
  *
  * @Created by zhiwei on 2024/5/15.
  */
 @Slf4j
 @RestController
-@RequestMapping(value = "/v1/api/email")
-public class EmailController {
+@RequestMapping(value = "/v1/api/coze")
+public class CozeController {
 
-    @Autowired
-    @Qualifier(value = "emailService")
-    private EmailService emailService;
-
-    /**
-     * set cookie
-     */
-    @PostMapping("/single")
+    @PostMapping("/receive/page")
     public
     @ResponseBody
-    BaseResponse<Boolean> setCookie(@RequestBody EmailMsgVo emailMsgVo) {
-        log.info("email single ,入参 : {}", JSON.toJSONString(emailMsgVo));
-        boolean result = emailService.sendOverdue(
-                emailMsgVo.getTo(),
-                emailMsgVo.getTitle(),
-                emailMsgVo.getContent()
-        );
-        return ResponseFactory.success(result);
+    BaseResponse<String> receivePage(@RequestBody Object param) {
+        log.debug("receive page ,入参 : {}", JSON.toJSONString(param));
+        try {
+            log.info("param:{}", JSON.toJSONString(param));
+            return ResponseFactory.success(null);
+        } catch (Exception e) {
+            log.error("receive page ,入参：{}", e.getMessage(), e);
+            return ResponseFactory.fail(null);
+        }
     }
-
 }
