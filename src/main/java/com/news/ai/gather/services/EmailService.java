@@ -14,5 +14,7 @@ public interface EmailService extends IService<EmailBean> {
 
     boolean sendOverdue(String to, String title, String content);
 
+    boolean sendNormal(String to, String title, String content);
+
     void sendOverdue(List<String> to, String title, String content);
 }

@@ -119,6 +119,27 @@ public class EmailServiceImpl extends ServiceImpl<EmailDao, EmailBean> implement
     }
 
     @Override
+    public boolean sendNormal(String to, String title, String content) {
+        String body = content.replaceAll("\\\\n\\\\n", "\n").replaceAll("\\\\n", "\n");
+        sendEmail(to, title, body);
+        EmailBean emailBean = new EmailBean();
+        emailBean.setEmailName(title);
+        emailBean.setEmailContent(body);
+        emailBean.setEmailFrom(from);
+        emailBean.setEmailTo(to == null ? defaultTo : to);
+        emailBean.setLogTime(LocalDateTime.now());
+        emailBean.setIsDelete(1);
+        boolean save = this.save(emailBean);
+        if (save) {
+            log.info("send overdue email success");
+            return true;
+        } else {
+            log.error("send overdue email failed");
+            return false;
+        }
+    }
+
+    @Override
     public void sendOverdue(List<String> to, String title, String content) {
         for (String each : to) {
             boolean resultEach = sendOverdue(each, title, content);
