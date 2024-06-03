@@ -37,7 +37,7 @@ public class CozeController {
         try {
             String output = param.get("out_put");
             String title = param.get("title");
-            emailService.sendNormal(defaultTo, title, output);
+            emailService.sendNormal("diaozhiwei2k@163.com", title, output);
             return ResponseFactory.success(null);
         } catch (Exception e) {
             log.error("receive page ,入参：{}", e.getMessage(), e);
